@@ -1,8 +1,8 @@
+deps_dir = "D:/workspace/common_deps/"
+
 workspace "Workspace"
 	configurations {"Debug", "Release"}
 	location "./build"
-    
-    deps_dir = "D:/workspace/common_deps/"
 
 	includedirs {
         deps_dir .. "boost_1_64_0",
@@ -40,11 +40,11 @@ project "GTestWrapper"
 project "GTestWrapperTest"
 	kind "ConsoleApp"
 	targetdir "./bin"
-	
-	includedirs {
-		"./include",
-	}	
-	
+	    
+    includedirs {
+        "./include",
+	}
+		
 	files {
 		"./tests/main.cpp",
 	}
