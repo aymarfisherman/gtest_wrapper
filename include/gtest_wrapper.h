@@ -14,19 +14,19 @@
 #include <crtdbg.h>
 #include <boost/algorithm/string.hpp>
 
-class MemoryLeakDetector : public testing::EmptyTestEventListener {
+/*class MemoryLeakDetector : public testing::EmptyTestEventListener {
 public:
 	MemoryLeakDetector() {}
 
 	virtual void OnTestStart(const testing::TestInfo& testInfo) {
-		if (boost::contains(testInfo.name(), "DisableMemoryLeakDetection")) {
+		if (boost::contains(testInfo.name(), "leak_detection_off")) {
 			return;
 		}
 		_CrtMemCheckpoint(&memState_);
 	}
 
 	virtual void OnTestEnd(const testing::TestInfo& testInfo) {
-		if (boost::contains(testInfo.name(), "DisableMemoryLeakDetection")) {
+		if (boost::contains(testInfo.name(), "leak_detection_off")) {
 			return;
 		}
 		if (testInfo.result()->Passed()) {
@@ -43,15 +43,15 @@ public:
 
 private:
 	_CrtMemState memState_;
-};
+};*/
 
 int main(int argc, char **argv) {
 	testing::InitGoogleTest(&argc, argv);
 	testing::InitGoogleMock(&argc, argv);
 
 #ifdef _DEBUG
-	MemoryLeakDetector memoryLeakDetector;
-	testing::UnitTest::GetInstance()->listeners().Append(&memoryLeakDetector);
+	/*MemoryLeakDetector memoryLeakDetector;
+	testing::UnitTest::GetInstance()->listeners().Append(&memoryLeakDetector);*/
 #endif
 
 	return RUN_ALL_TESTS();
